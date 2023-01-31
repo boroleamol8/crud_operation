@@ -1,0 +1,42 @@
+<?php
+
+$title = 'Policy List page';
+
+$this->headTitle($title);
+
+ ?>
+
+ <h1><?=$this->escapeHtml($title)?></h1>  
+
+        
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Policy No</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Premimum</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($users as $user): ?>
+      
+      <tr>
+        <td><?= $this->escapeHtml($user->getFirstName()) ?></td>
+        <td><?= $this->escapeHtml($user->getLastName()) ?></td>
+        <td><?= $this->escapeHtml($user->getPolicyNo()) ?></td>
+        <td><?= $this->escapeHtml($user->getStartDate()) ?></td>
+        <td><?= $this->escapeHtml($user->getEndDate()) ?></td>
+        <td><?= $this->escapeHtml($user->getPremimum()) ?></td>
+        <td>
+            <a class="btn btn-warning" href="<?php echo $this->url('user',['action' => 'edit','id' => $user->getId()]) ?>">Edit</a>
+            <a class="btn btn-danger" href="<?php echo $this->url('user',['action' => 'delete','id' => $user->getId()]) ?>">Delete</a>
+        </td>
+      </tr>
+
+    <?php endforeach ?>
+    </tbody>
+  </table>
